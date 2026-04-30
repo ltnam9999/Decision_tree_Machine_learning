@@ -1,0 +1,3 @@
+Root: if study_hours <= 2.2500
+    True: Predict = 0
+    False: Predict = 1

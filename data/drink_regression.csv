@@ -1,0 +1,15 @@
+Outlook,Temperature,Humidity,Wind,Amount_ml
+Sunny,Hot,High,Weak,0
+Sunny,Hot,High,Strong,0
+Overcast,Hot,High,Weak,500
+Rain,Mild,High,Weak,400
+Rain,Cool,Normal,Weak,300
+Rain,Cool,Normal,Strong,0
+Overcast,Cool,Normal,Strong,400
+Sunny,Mild,High,Weak,0
+Sunny,Cool,Normal,Weak,300
+Rain,Mild,Normal,Weak,500
+Sunny,Mild,Normal,Strong,300
+Overcast,Mild,High,Strong,600
+Overcast,Hot,Normal,Weak,500
+Rain,Mild,High,Strong,0
