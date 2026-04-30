@@ -34,6 +34,13 @@ Decision_tree_Project/
 Ensure you have Python installed (3.8+ recommended). You can install the necessary dependencies using pip:
 pip install numpy pandas scikit-learn
 
+### 🔧 Quick Environment Setup
+1. Create virtual environment: `python -m venv .venv`
+2. Activate it:
+   - Windows: `.\.venv\Scripts\activate`
+   - Mac/Linux: `source .venv/bin/activate`
+3. Install dependencies: `pip install -r requirements.txt`
+
 ### Running the Project
 
 Since the execution scripts have been organized into the `src/` directory, use the following commands from the project root to run the models:
