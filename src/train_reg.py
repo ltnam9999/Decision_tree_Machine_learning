@@ -1,14 +1,16 @@
 import argparse
 from pathlib import Path
 
-from core.classifier import DecisionTreeClassifier
-from evaluate import evaluate_classification
+import numpy as np
+
+from core.regressor import DecisionTreeRegressor
+from src.evaluate import evaluate_regression
 from modelpre.preprocessing import load_data, train_test_split_custom
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Train Decision Tree Classifier tự code từ đầu."
+        description="Train Decision Tree Regressor tự code từ đầu."
     )
     parser.add_argument(
         "--csv",
@@ -17,8 +19,8 @@ def parse_args():
     )
     parser.add_argument(
         "--target",
-        default="play",
-        help="Tên cột nhãn cần phân loại.",
+        default="score",
+        help="Tên cột giá trị cần dự đoán.",
     )
     parser.add_argument(
         "--test-size",
@@ -47,10 +49,10 @@ def main():
 
     target_column = args.target
 
-    X, y, encoders, feature_names = load_data(
+    X, y, _, feature_names = load_data(
         csv_path=csv_path,
         target_column=target_column,
-        task_type="classification",
+        task_type="regression",
     )
 
     X_train, X_test, y_train, y_test = train_test_split_custom(
@@ -60,31 +62,22 @@ def main():
         random_state=42,
     )
 
-    model = DecisionTreeClassifier(max_depth=args.max_depth, min_samples_split=2)
+    model = DecisionTreeRegressor(max_depth=args.max_depth, min_samples_split=2)
     model.fit(X_train, y_train, feature_names=feature_names)
 
     y_pred = model.predict(X_test)
 
-    # Giải mã nhãn phân loại để output dễ đọc hơn.
-    target_encoder = encoders.get(target_column)
-    if target_encoder is not None:
-        y_test_print = target_encoder.inverse_transform(y_test)
-        y_pred_print = target_encoder.inverse_transform(y_pred)
-    else:
-        y_test_print = y_test
-        y_pred_print = y_pred
+    print("Predictions:", list(np.round(y_pred, 2)))
+    print("Actual:", list(np.round(y_test, 2)))
 
-    print("Predictions:", list(y_pred_print))
-    print("Actual:", list(y_test_print))
-
-    evaluate_classification(
-        y_test_print,
-        y_pred_print,
+    evaluate_regression(
+        y_test,
+        y_pred,
         save_path=results_dir / "metrics_summary.json",
     )
 
     print("\n===== Tree Structure =====")
-    model.print_tree(export_path=results_dir / "classification_tree.txt")
+    model.print_tree(export_path=results_dir / "regression_tree.txt")
 
 
 if __name__ == "__main__":

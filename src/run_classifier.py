@@ -1,19 +1,19 @@
 import sys
 
-from train_reg import main
+from src.train_clf import main
 
 
 # Cau hinh dataset can chay
-CSV_PATH = "data/drink_regression.csv"
-TARGET_COLUMN = "Amount_ml"
+CSV_PATH = "data/drink_classification.csv"
+TARGET_COLUMN = "Drink"
 MAX_DEPTH = 5
 TEST_SIZE = 0.3
 
 
 if __name__ == "__main__":
-    # Gia lap tham so dong lenh de train_reg.py co the chay bang nut Run.
+    # Gia lap tham so dong lenh de train_clf.py co the chay bang nut Run.
     sys.argv = [
-        "train_reg.py",
+        "train_clf.py",
         "--csv",
         CSV_PATH,
         "--target",
