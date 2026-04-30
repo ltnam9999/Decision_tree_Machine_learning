@@ -11,6 +11,7 @@ This project focuses on implementing and evaluating **Decision Tree** models for
 ## 📂 Project Structure
 
 All core logic and execution scripts are organized within the `Decision_tree_Project` directory for maximum modularity:
+```text
 Decision_tree_Project/
 ├── core/                # Core logic for Decision Tree implementation
 ├── data/                # Datasets (Heart, Drink, Teen Mental Health, etc.)
@@ -18,6 +19,7 @@ Decision_tree_Project/
 ├── modelpre/            # Model preprocessing utilities
 ├── results/             # Output directory for trees (.txt) and metrics (.json)
 └── src/                 # Main execution scripts (Training & Evaluation)
+```
 
 ## 🚀 Key Features
 
